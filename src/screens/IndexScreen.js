@@ -4,7 +4,7 @@ import { Context } from '../context/BlogContext';
 import { Feather } from '@expo/vector-icons';
 
 const IndexScreen = ( {navigation} ) => {
-    console.log( {navigation} );
+    // console.log( {navigation} );
     const { state, addBlogPost, deleteBlogPost } = useContext(Context);
     return (
         <View>
@@ -28,6 +28,17 @@ const IndexScreen = ( {navigation} ) => {
             />
         </View>
     );
+};
+
+IndexScreen.navigationOptions = ( {navigation} ) => {
+    console.log({navigation})
+    return {
+        headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Create') }>
+                <Feather name="plus" size={30}/>
+            </TouchableOpacity>
+        )
+    };
 };
 
 const styles = StyleSheet.create({
